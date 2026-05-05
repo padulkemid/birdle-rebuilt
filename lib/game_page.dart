@@ -1,5 +1,6 @@
 import 'package:birdie/constants.dart';
 import 'package:birdie/game.dart';
+import 'package:birdie/guess_input.dart';
 import 'package:birdie/tile.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,11 @@ class GamePage extends StatelessWidget {
                   Tile(letter: letter.char, hitType: letter.type),
               ],
             ),
+          GuessInput(
+            onSubmitGuess: (guess) {
+              debugPrint(guess);
+            },
+          ),
         ],
       ),
     );
