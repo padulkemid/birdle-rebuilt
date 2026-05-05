@@ -4,9 +4,14 @@ import 'package:birdie/guess_input.dart';
 import 'package:birdie/tile.dart';
 import 'package:flutter/material.dart';
 
-class GamePage extends StatelessWidget {
-  GamePage({super.key});
+class GamePage extends StatefulWidget {
+  const GamePage({super.key});
 
+  @override
+  State<GamePage> createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
   final Game _game = Game();
 
   @override
@@ -27,7 +32,9 @@ class GamePage extends StatelessWidget {
             ),
           GuessInput(
             onSubmitGuess: (guess) {
-              debugPrint(guess);
+              setState(() {
+                _game.guess(guess);
+              });
             },
           ),
         ],

@@ -53,9 +53,6 @@ class GuessInput extends StatelessWidget {
                 onSubmitted: (_) {
                   _onSubmitGuess();
                 },
-                onChanged: (val) {
-                  _guessController.text = val.trim();
-                },
               ),
             ),
           ),
