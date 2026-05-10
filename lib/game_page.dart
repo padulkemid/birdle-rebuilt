@@ -18,26 +18,28 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Padding(
       padding: .all(AppConstants.spacePadding),
-      child: Column(
-        spacing: AppConstants.spaceHeight,
-        children: [
-          for (final guess in _game.guesses)
-            Row(
-              spacing: AppConstants.spaceWidth,
-              mainAxisAlignment: .center,
-              children: [
-                for (final letter in guess)
-                  Tile(letter: letter.char, hitType: letter.type),
-              ],
+      child: SingleChildScrollView(
+        child: Column(
+          spacing: AppConstants.spaceHeight,
+          children: [
+            for (final guess in _game.guesses)
+              Row(
+                spacing: AppConstants.spaceWidth,
+                mainAxisAlignment: .center,
+                children: [
+                  for (final letter in guess)
+                    Tile(letter: letter.char, hitType: letter.type),
+                ],
+              ),
+            GuessInput(
+              onSubmitGuess: (guess) {
+                setState(() {
+                  _game.guess(guess);
+                });
+              },
             ),
-          GuessInput(
-            onSubmitGuess: (guess) {
-              setState(() {
-                _game.guess(guess);
-              });
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

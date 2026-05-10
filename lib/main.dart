@@ -1,4 +1,5 @@
 import 'package:birdie/game_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +12,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // checks if its debug mode or not
+    if (kDebugMode) {
+      print('debugMode');
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -18,7 +24,7 @@ class MainApp extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.green.shade100,
         ),
-        body: Center(child: GamePage()),
+        body: Align(alignment: .topCenter, child: GamePage()),
       ),
     );
   }
